@@ -6,6 +6,10 @@ public class UserException extends BaseException {
         super("user." + code);
     }
 
+    public static UserException unauthorized() {
+        return new UserException("unauthorized");
+    }
+
     public static UserException notFound() {
         return new UserException("user.not.found");
     }

@@ -22,6 +22,10 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    public Optional<User> findById(String id) {
+        return repository.findById(id);
+    }
+
     public Optional<User> findByEmail(String email) {
         return repository.findByEmail(email);
     }
