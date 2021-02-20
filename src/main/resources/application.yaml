@@ -1,4 +1,15 @@
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: YOUR_USERNAME
+    password: YOUR_PASSWORD
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   jpa:
     hibernate:
       ddl-auto: update
@@ -16,4 +27,6 @@ app:
   token:
     secret: m#MySecretGGWP2021
     issuer: BackendService
+  email:
+    from: YOUR_ACCOUNT@gmail.com
 
