@@ -28,7 +28,7 @@ at my YouTube channel https://www.youtube.com/c/NatthaponPinyo
 - Database (Foreign Key)
 - JWT
 
-## EP 4 (20 Feb 2021)
+## EP 4 (https://youtu.be/wuMX7haEnac)
 - Email
 - Job Scheudler
 
