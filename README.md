@@ -37,6 +37,11 @@ at my YouTube channel https://www.youtube.com/c/NatthaponPinyo
 - Angular 11 (Frontend)
 
 ## EP 6 (6 March 2021)
+- Bootstrap
+- Angular Material  
+- Security for Frontend
+
+## EP 7 (13 March 2021)
 - Kafka
 - Redis
 
