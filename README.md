@@ -36,7 +36,7 @@ at my YouTube channel https://www.youtube.com/c/NatthaponPinyo
 - Websocket
 - Angular 11 (Frontend)
 
-## EP 6 (6 March 2021)
+## EP 6 (https://youtu.be/QK9LdHGdbHc)
 - Bootstrap
 - Angular Material  
 - Security for Frontend
