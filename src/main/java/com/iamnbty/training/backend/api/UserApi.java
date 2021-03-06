@@ -3,6 +3,7 @@ package com.iamnbty.training.backend.api;
 import com.iamnbty.training.backend.business.UserBusiness;
 import com.iamnbty.training.backend.exception.BaseException;
 import com.iamnbty.training.backend.model.MLoginRequest;
+import com.iamnbty.training.backend.model.MLoginResponse;
 import com.iamnbty.training.backend.model.MRegisterRequest;
 import com.iamnbty.training.backend.model.MRegisterResponse;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +21,8 @@ public class UserApi {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody MLoginRequest request) throws BaseException {
-        String response = business.login(request);
+    public ResponseEntity<MLoginResponse> login(@RequestBody MLoginRequest request) throws BaseException {
+        MLoginResponse response = business.login(request);
         return ResponseEntity.ok(response);
     }
 
