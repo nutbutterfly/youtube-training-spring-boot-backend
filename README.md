@@ -41,8 +41,15 @@ at my YouTube channel https://www.youtube.com/c/NatthaponPinyo
 - Angular Material  
 - Security for Frontend
 
-## EP 7 (13 March 2021)
+## EP 7 (https://youtu.be/EHW64qm_OQI)
 - Kafka
+- Kafka (Producer & Consumer)
+
+## EP 8 (20 March 2021)
+- Angular Frontend (Activation Page)
+- Angular Frontend (i18n)
 - Redis
+
+# Stay tuned for more episodes...
 
 # Stay tuned for more episodes...
