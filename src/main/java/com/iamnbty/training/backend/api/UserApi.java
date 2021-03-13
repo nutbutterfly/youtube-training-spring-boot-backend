@@ -2,10 +2,8 @@ package com.iamnbty.training.backend.api;
 
 import com.iamnbty.training.backend.business.UserBusiness;
 import com.iamnbty.training.backend.exception.BaseException;
-import com.iamnbty.training.backend.model.MLoginRequest;
-import com.iamnbty.training.backend.model.MLoginResponse;
-import com.iamnbty.training.backend.model.MRegisterRequest;
-import com.iamnbty.training.backend.model.MRegisterResponse;
+import com.iamnbty.training.backend.model.*;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,6 +29,19 @@ public class UserApi {
         MRegisterResponse response = business.register(request);
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/activate")
+    public ResponseEntity<MActivateResponse> activate(@RequestBody MActivateRequest request) throws BaseException {
+        MActivateResponse response = business.activate(request);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/resend-activation-email")
+    public ResponseEntity<Void> resendActivationEmail(@RequestBody MResendActivationEmailRequest request) throws BaseException {
+        business.resendActivationEmail(request);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
 
     @GetMapping("/refresh-token")
     public ResponseEntity<String> refreshToken() throws BaseException {

@@ -7,6 +7,8 @@ import com.iamnbty.training.backend.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -24,6 +26,10 @@ public class UserService {
 
     public Optional<User> findById(String id) {
         return repository.findById(id);
+    }
+
+    public Optional<User> findByToken(String token) {
+        return repository.findByToken(token);
     }
 
     public Optional<User> findByEmail(String email) {
@@ -54,7 +60,7 @@ public class UserService {
         return passwordEncoder.matches(rawPassword, encodedPassword);
     }
 
-    public User create(String email, String password, String name) throws BaseException {
+    public User create(String email, String password, String name, String token, Date tokenExpireDate) throws BaseException {
         // validate
         if (Objects.isNull(email)) {
             throw UserException.createEmailNull();
@@ -78,6 +84,8 @@ public class UserService {
         entity.setEmail(email);
         entity.setPassword(passwordEncoder.encode(password));
         entity.setName(name);
+        entity.setToken(token);
+        entity.setTokenExpire(tokenExpireDate);
 
         return repository.save(entity);
     }

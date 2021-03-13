@@ -1,15 +1,10 @@
+server:
+  port: 8080
 spring:
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: YOUR_USERNAME
-    password: YOUR_PASSWORD
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: "my-awesome-app"
   jpa:
     hibernate:
       ddl-auto: update
