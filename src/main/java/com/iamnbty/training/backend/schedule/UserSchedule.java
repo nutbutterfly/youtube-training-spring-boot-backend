@@ -1,6 +1,5 @@
 package com.iamnbty.training.backend.schedule;
 
-import com.iamnbty.training.backend.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -8,12 +7,6 @@ import org.springframework.stereotype.Service;
 @Service
 @Log4j2
 public class UserSchedule {
-
-    private final UserService userService;
-
-    public UserSchedule(UserService userService) {
-        this.userService = userService;
-    }
 
     // Schedule Note
     // 1 => second
@@ -28,7 +21,7 @@ public class UserSchedule {
      */
     @Scheduled(cron = "0 * * * * *")
     public void testEveryMinute() {
-        log.info("Hello, What's up?");
+        // log.info("Every Minute");
     }
 
     /**
@@ -36,7 +29,7 @@ public class UserSchedule {
      */
     @Scheduled(cron = "0 0 0 * * *")
     public void testEveryMidNight() {
-
+        // log.info("Mid-Night");
     }
 
     /**
@@ -44,7 +37,7 @@ public class UserSchedule {
      */
     @Scheduled(cron = "0 50 10 * * *", zone = "Asia/Bangkok")
     public void testEverydayNineAM() {
-        log.info("Hey Hoo!!!");
+        // log.info("At Specific Time");
     }
 
 }
