@@ -45,7 +45,7 @@ at my YouTube channel https://www.youtube.com/c/NatthaponPinyo
 - Kafka
 - Kafka (Producer & Consumer)
 
-## EP 8 (27 March 2021)
+## EP 8 (https://youtu.be/Sqdi8zD6VpU)
 - Angular Frontend (Activation Page)
 - Angular Frontend (i18n)
 - Redis
