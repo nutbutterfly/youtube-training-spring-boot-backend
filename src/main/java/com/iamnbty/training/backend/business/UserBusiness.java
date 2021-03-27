@@ -12,6 +12,7 @@ import com.iamnbty.training.backend.util.SecurityUtil;
 import io.netty.util.internal.StringUtil;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -34,6 +35,40 @@ public class UserBusiness {
         this.tokenService = tokenService;
         this.userMapper = userMapper;
         this.emailBusiness = emailBusiness;
+    }
+
+    public MUserProfile getMyUserProfile() throws UserException {
+        Optional<String> opt = SecurityUtil.getCurrentUserId();
+        if (opt.isEmpty()) {
+            throw UserException.unauthorized();
+        }
+
+        String userId = opt.get();
+
+        Optional<User> optUser = userService.findById(userId);
+        if (optUser.isEmpty()) {
+            throw UserException.notFound();
+        }
+
+        return userMapper.toUserProfile(optUser.get());
+    }
+
+    public MUserProfile updateMyUserProfile(MUpdateUserProfileRequest request) throws UserException {
+        Optional<String> opt = SecurityUtil.getCurrentUserId();
+        if (opt.isEmpty()) {
+            throw UserException.unauthorized();
+        }
+
+        String userId = opt.get();
+
+        // validate
+        if (ObjectUtils.isEmpty(request.getName())) {
+            throw UserException.updateNameNull();
+        }
+
+        User user = userService.updateName(userId, request.getName());
+
+        return userMapper.toUserProfile(user);
     }
 
     public MLoginResponse login(MLoginRequest request) throws BaseException {
@@ -120,14 +155,14 @@ public class UserBusiness {
     }
 
     public void resendActivationEmail(MResendActivationEmailRequest request) throws BaseException {
-        String email = request.getEmail();
-        if (StringUtil.isNullOrEmpty(email)) {
-            throw UserException.resendActivationEmailNoEmail();
+        String token = request.getToken();
+        if (StringUtil.isNullOrEmpty(token)) {
+            throw UserException.resendActivationEmailNoToken();
         }
 
-        Optional<User> opt = userService.findByEmail(email);
+        Optional<User> opt = userService.findByToken(token);
         if (opt.isEmpty()) {
-            throw UserException.resendActivationEmailNotFound();
+            throw UserException.resendActivationTokenNotFound();
         }
 
         User user = opt.get();

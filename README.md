@@ -45,9 +45,19 @@ at my YouTube channel https://www.youtube.com/c/NatthaponPinyo
 - Kafka
 - Kafka (Producer & Consumer)
 
-## EP 8 (20 March 2021)
+## EP 8 (27 March 2021)
 - Angular Frontend (Activation Page)
 - Angular Frontend (i18n)
 - Redis
+
+## EP 9 (3 April 2021)
+- Build Spring Boot as Container (Build Image)
+- Run Spring Boot from Image (Build Container)
+- Introduction to Kubernetes
+
+## EP 10 (10 April 2021)
+- Build Single Node Kubernetes Clutser (Local)
+- Deploy Spring Boot App (Contianerized) to Kubernetes Cluster
+- Monitoring our Kubernetes Cluster
 
 # Stay tuned for more episodes...

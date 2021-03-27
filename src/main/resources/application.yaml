@@ -17,6 +17,13 @@ spring:
       enabled: true
       max-file-size: 2MB
       max-request-size: 5MB
+  redis:
+    host: localhost
+    port: 6379
+  cache:
+    type: redis
+    redis:
+      time-to-live: 300000
 ---
 app:
   token:

@@ -3,8 +3,8 @@ package com.iamnbty.training.backend.model;
 import lombok.Data;
 
 @Data
-public class MResendActivationEmailRequest {
+public class MUpdateUserProfileRequest {
 
-    private String token;
+    private String name;
 
 }
