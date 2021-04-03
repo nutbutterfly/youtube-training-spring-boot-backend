@@ -50,7 +50,7 @@ at my YouTube channel https://www.youtube.com/c/NatthaponPinyo
 - Angular Frontend (i18n)
 - Redis
 
-## EP 9 (3 April 2021)
+## EP 9 (https://youtu.be/ZIPMuaxF28E)
 - Build Spring Boot as Container (Build Image)
 - Run Spring Boot from Image (Build Container)
 - Introduction to Kubernetes
