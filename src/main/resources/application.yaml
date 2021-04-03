@@ -2,24 +2,24 @@ server:
   port: 8080
 spring:
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: ${SECRET_KAFKA_HOST:localhost}:${SECRET_KAFKA_PORT:9092}
     consumer:
       group-id: "my-awesome-app"
   jpa:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/backend
-    username: postgres
-    password: syspass
+    url: jdbc:postgresql://${SECRET_DB_HOST:localhost}:${SECRET_DB_PORT:5432}/backend
+    username: ${SECRET_DB_USERNAME:postgres}
+    password: ${SECRET_DB_PASSWORD:syspass}
   servlet:
     multipart:
       enabled: true
       max-file-size: 2MB
       max-request-size: 5MB
   redis:
-    host: localhost
-    port: 6379
+    host: ${SECRET_DB_REDIS_HOST:localhost}
+    port: ${SECRET_DB_REDIS_PORT:6379}
   cache:
     type: redis
     redis:
@@ -27,8 +27,5 @@ spring:
 ---
 app:
   token:
-    secret: m#MySecretGGWP2021
+    secret: ${SECRET_JWT_SECRET}
     issuer: BackendService
-  email:
-    from: YOUR_ACCOUNT@gmail.com
-

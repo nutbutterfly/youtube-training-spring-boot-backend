@@ -1,0 +1,9 @@
+version: '2'
+services:
+  backend:
+    container_name: backend
+    image: training/backend:latest
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
