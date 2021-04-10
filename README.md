@@ -55,7 +55,7 @@ at my YouTube channel https://www.youtube.com/c/NatthaponPinyo
 - Run Spring Boot from Image (Build Container)
 - Introduction to Kubernetes
 
-## EP 10 (10 April 2021)
+## EP 10 (https://youtu.be/9TEMfIUWJt4)
 - Build Single Node Kubernetes Clutser (Local)
 - Deploy Spring Boot App (Contianerized) to Kubernetes Cluster
 - Monitoring our Kubernetes Cluster
