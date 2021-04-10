@@ -1,0 +1,119 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: training
+  labels:
+    customer: training
+    environment: development
+    app: backend
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - image: localhost:5000/training/backend
+          name: backend
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "300m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 90
+            periodSeconds: 10
+          env:
+          - name: SECRET_KAFKA_HOST
+            valueFrom:
+              secretKeyRef:
+                name: backend
+                key: kafka_host
+          - name: SECRET_KAFKA_PORT
+            valueFrom:
+              secretKeyRef:
+                name: backend
+                key: kafka_port
+          - name: SECRET_DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: backend
+                key: db_host
+          - name: SECRET_DB_PORT
+            valueFrom:
+              secretKeyRef:
+                name: backend
+                key: db_port
+          - name: SECRET_DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: backend
+                key: db_username
+          - name: SECRET_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: backend
+                key: db_password
+          - name: SECRET_REDIS_HOST
+            valueFrom:
+              secretKeyRef:
+                name: backend
+                key: redis_host
+          - name: SECRET_REDIS_PORT
+            valueFrom:
+              secretKeyRef:
+                name: backend
+                key: redis_port
+          - name: SECRET_REDIS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: backend
+                key: redis_password                
+          - name: SECRET_JWT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: backend
+                key: jwt_secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: training
+  labels:
+    app: backend
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+  selector:
+    app: backend
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backend
+  namespace: training
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: backend
+  minReplicas: 2
+  maxReplicas: 4
+  targetCPUUtilizationPercentage: 80
