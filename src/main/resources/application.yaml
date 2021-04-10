@@ -18,8 +18,9 @@ spring:
       max-file-size: 2MB
       max-request-size: 5MB
   redis:
-    host: ${SECRET_DB_REDIS_HOST:localhost}
-    port: ${SECRET_DB_REDIS_PORT:6379}
+    host: ${SECRET_REDIS_HOST:localhost}
+    port: ${SECRET_REDIS_PORT:6379}
+    password: ${SECRET_REDIS_PASSWORD}
   cache:
     type: redis
     redis:
